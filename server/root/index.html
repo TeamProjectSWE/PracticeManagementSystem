@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/auth/login">로그인</a>
+<a href="/auth/logout">로그아웃</a>
+<a href="/auth/session">세션 확인</a>
+<a href="/auth">정보 확인</a>
+<br/>
+<br/>
+<label>파이썬</label>
+<a href="/api/coding/python">파이썬 정보 확인</a>
+<form method="post" action="/api/coding/python" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td><label>src</label></td>
+            <td><input type="file" name="src"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>entry</label></td>
+            <td><input type="text" name="entry"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>params</label></td>
+            <td><input type="text" name="params"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>return</label></td>
+            <td><input type="text" name="return"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>call</label></td>
+            <td><input type="text" name="call"/></td>
+        </tr>
+    </table>
+    <button type="submit">Call</button>
+</form>
+
+<a href="/api/course">수업 확인</a>
+<form method="post" action="/api/course" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td><label>code</label></td>
+            <td><input type="text" name="code"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>name</label></td>
+            <td><input type="text" name="name"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>description</label></td>
+            <td><input type="text" name="description"/><br/></td>
+        </tr>
+    </table>
+    <button type="submit">New Course</button>
+</form>
+</body>
+</html>

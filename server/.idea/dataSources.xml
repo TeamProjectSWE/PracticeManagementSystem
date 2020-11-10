@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="아마존, 마리아" uuid="892cbb02-c38c-42b6-ae1b-8005dfd1f5bc">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://sunshine.ceh2bnjpp9j5.ap-northeast-2.rds.amazonaws.com:3306:3306/coditnator</jdbc-url>
+    </data-source>
+  </component>
+</project>

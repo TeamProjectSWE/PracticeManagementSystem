@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b2f29755-8e55-4471-a419-eae72310c62d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coding/coding.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coding/ipython.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coding/ipython_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coding/typedef.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/coding/typedef_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Go Application" />
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="C:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1jqtBS4qF9B37qqQY7QLVMEZNGS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
+  </component>
+  <component name="RunManager" selected="Go Build.go build main.go">
+    <configuration name="go build github.com/TeamProjectWSE/PracticeManagementSystem/server/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/cmd/test.go" />
+      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/cmd" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build test.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/cmd/test.go" />
+      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestParseType in github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <working_directory value="$PROJECT_DIR$/coding" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestParseType\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestParseType/ParseValue in github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <working_directory value="$PROJECT_DIR$/coding" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestParseType\E$/^\QParseValue\E$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Go Build.go build test.go" />
+        <item itemvalue="Go Build.go build github.com/TeamProjectWSE/PracticeManagementSystem/server/cmd" />
+        <item itemvalue="Go Test.TestParseType/ParseValue in github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" />
+        <item itemvalue="Go Test.TestParseType in github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1094" y="535" key="#SQL_Dialects" timestamp="1604639561866">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1094" y="535" key="#SQL_Dialects/0.0.3440.1400@0.0.3440.1400" timestamp="1604639561866" />
+    <state x="1887" y="525" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604639536576">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1887" y="525" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1604639536576" />
+    <state width="3397" height="507" key="GridCell.Tab.0.bottom" timestamp="1604980411365">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="507" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604980411365" />
+    <state width="3397" height="507" key="GridCell.Tab.0.center" timestamp="1604980411365">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="507" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604980411365" />
+    <state width="3397" height="507" key="GridCell.Tab.0.left" timestamp="1604980411365">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="507" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604980411365" />
+    <state width="3397" height="507" key="GridCell.Tab.0.right" timestamp="1604980411365">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="507" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604980411365" />
+    <state width="3397" height="483" key="GridCell.Tab.1.bottom" timestamp="1604665474912">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="483" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604665474912" />
+    <state width="3397" height="483" key="GridCell.Tab.1.center" timestamp="1604665474912">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="483" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604665474912" />
+    <state width="3397" height="483" key="GridCell.Tab.1.left" timestamp="1604665474912">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="483" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604665474912" />
+    <state width="3397" height="483" key="GridCell.Tab.1.right" timestamp="1604665474912">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="483" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604665474912" />
+    <state x="1221" y="344" key="SettingsEditor" timestamp="1604543782537">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1221" y="344" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1604543782537" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1604641805248">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.3440.1400@0.0.3440.1400" timestamp="1604641805248" />
+    <state x="1534" y="567" width="371" height="271" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1604979546767">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1534" y="567" width="371" height="271" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.3440.1400@0.0.3440.1400" timestamp="1604979546767" />
+    <state x="1300" y="355" key="com.intellij.database.dbimport.ImportDialog" timestamp="1604978853548">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1300" y="355" key="com.intellij.database.dbimport.ImportDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1604978853548" />
+    <state x="1613" y="550" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1604941315975">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1613" y="550" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.3440.1400@0.0.3440.1400" timestamp="1604941315975" />
+    <state x="1833" y="489" width="1055" height="893" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1604979545174">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1833" y="489" width="1055" height="893" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1604979545174" />
+    <state x="1545" y="455" key="refactoring.ChangeSignatureDialog" timestamp="1604582074224">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1545" y="455" key="refactoring.ChangeSignatureDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1604582074224" />
+    <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1604937885020">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1604937885020" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cmd/test.go</url>
+          <line>19</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/coding/ipython.go</url>
+          <line>177</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
