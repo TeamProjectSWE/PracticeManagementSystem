@@ -1,0 +1,106 @@
+@import 'src/assets/scss/colors';
+
+.add_problem_modal {
+  position: relative;
+  width: 800px;
+
+  .select_type {
+    width: 100%;
+    text-align: center;
+
+    & > button {
+      width: 200px;
+      height: 80px;
+      margin: 40px 20px;
+
+      em {
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+  }
+  .problem_form {
+    width: 100%;
+    & > table {
+      width: 100%;
+      & > thead, & > tbody {
+        & > tr > th {
+          padding: 10px 5px 5px 5px;
+          text-align: left;
+          font-size: 12px;
+          color: $color-font-darkDarkGray;
+
+          & > button {
+            margin-left: 5px;
+            padding: 2px 5px;
+          }
+        }
+        & > tr > td {
+          padding: 5px;
+          text-align: center;
+
+          > .tag {
+            svg > path {
+              fill: $color-darkGray !important;
+            }
+          }
+
+          & > input {
+            width: 100%;
+          }
+          & > textarea {
+            width: 100%;
+            height: 200px;
+          }
+
+          & > button {
+            width: 200px;
+            height: 80px;
+
+            em {
+              font-weight: bold;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sub_table {
+    width: 100%;
+    th {
+      padding: 10px 0 10px 20px;
+      text-align: left;
+      font-size: 12px;
+      color: $color-font-darkDarkGray;
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px;
+      text-align: left;
+      font-size: 12px;
+      color: $color-font-darkDarkGray;
+
+      & > input {
+        width: 100%;
+      }
+    }
+
+    &.params {
+      td {
+        width: 50%;
+      }
+    }
+    &.test_case {
+      td {
+        width: 50%;
+      }
+    }
+    &.choices {
+      td {
+        width: 100%;
+      }
+    }
+  }
+}

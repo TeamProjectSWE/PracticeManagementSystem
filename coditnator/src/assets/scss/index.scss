@@ -1,0 +1,134 @@
+@import 'src/assets/scss/colors';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+em {
+  font-style: normal;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  height: 100%;
+}
+
+.logo {
+  height: 100%;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  background-color: $color-lightGray;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset;
+  overflow-y: auto;
+
+  & > .content {
+    width: 100%;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: white;
+  }
+}
+.page_modal {
+  position: relative;
+}
+
+.page_wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.layout {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+
+}
+
+.wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.icon_btn {
+  background: transparent;
+  border: 0;
+  border-radius: 20%;
+  outline: 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-cherry2;
+  }
+}
+
+
+.hide {
+  display: none !important;
+}
+
+// [ Align ] ----------
+.flex-align {
+  display: flex;
+  &.middle {
+    align-items: center;
+  }
+  &.center {
+    justify-content: center;
+  }
+}
+
+.vertical-image-wrap {
+  position: relative;
+}
+.vertical-image {
+  position:absolute;
+  margin:auto;
+  top:0; bottom:0; left:0; right:0;
+}
+
+// [ Design ] ----------
+.design_form {
+  &.necessary {
+    background-color: $color-lightGray;
+  }
+
+  &.input_A {
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid $color-border-gray2;
+  }
+
+  &.textarea_A {
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: 1px solid $color-border-gray2;
+    resize: none;
+  }
+}

@@ -1,0 +1,6 @@
+
+# dependency
+node_module/
+
+# DB auth
+model/config.js

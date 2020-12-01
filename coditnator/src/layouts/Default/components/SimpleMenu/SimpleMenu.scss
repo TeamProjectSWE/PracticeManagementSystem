@@ -1,0 +1,23 @@
+@import 'src/assets/scss/colors';
+
+.simple_menu {
+  background-color: $color-cherry;
+  & > .top {
+    width: 100%;
+    height: 50px;
+  }
+  & > .icon_menu {
+    width: 100%;
+    ul {
+      padding: 20px 0;
+      width: 100%;
+      li {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        height: 50px;
+      }
+    }
+  }
+}

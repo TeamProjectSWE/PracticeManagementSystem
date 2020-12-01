@@ -1,0 +1,45 @@
+@import 'src/assets/scss/colors';
+
+
+.simple_table {
+  width: 100%;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead > tr {
+      th {
+        background-color: $color-lightGray;
+        padding: 10px 40px;
+        font-size: 12px;
+        color: $color-font-darkGray;
+        white-space: nowrap;
+        text-align: center;
+      }
+      th:nth-child(2) {
+        width: 100%;
+      }
+    }
+    tbody > tr {
+      td {
+        border-bottom: 1px solid $color-border-lightGray;
+        padding: 15px 20px;
+        font-size: 12px;
+        color: $color-font-darkGray;
+        white-space: nowrap;
+        text-align: center;
+
+        .icon_btn {
+          width: 25px;
+          height: 25px;
+          margin: 0 2px;
+
+          svg path {
+            fill: $color-darkGray !important;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@import 'src/assets/scss/colors';
+
+.modal_title {
+  font-weight: bold;
+  font-size: 15px;
+  color: $color-font-darkDarkGray;
+  border-bottom: 1px solid $color-border-gray2;
+  padding: 15px;
+}
+.modal_body {
+  padding: 15px;
+}

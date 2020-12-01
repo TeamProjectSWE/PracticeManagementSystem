@@ -1,0 +1,11 @@
+@import 'src/assets/scss/colors';
+
+.problems {
+  & > .content {
+    & > em {
+      font-weight: bold;
+      font-size: 14px;
+      color: $color-font-darkDarkGray;
+    }
+  }
+}

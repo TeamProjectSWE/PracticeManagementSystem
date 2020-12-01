@@ -1,0 +1,39 @@
+@import 'src/assets/scss/colors';
+
+.menu {
+  & > .top {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid $color-border-lightGray;
+    img {
+      width: 100%;
+      padding: 0 30px;
+    }
+  }
+  & > .text_menu {
+    width: 100%;
+    ul {
+      padding: 20px 0;
+      width: 100%;
+      li {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        height: 50px;
+        font-size: 15px;
+        color: $color-font-gray;
+      }
+      li.highlight, li:hover {
+        span {
+          padding: 7px 0;
+          margin: 0 10px;
+          border-radius: 5px;
+          background-color: $color-lightCherry;
+          color: $color-font-cherry;
+        }
+
+      }
+    }
+  }
+}
