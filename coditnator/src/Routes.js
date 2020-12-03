@@ -5,11 +5,13 @@ import { RouteWithLayout } from './common';
 import { Minimal as MinimalLayout, Default as DefaultLayout } from './layouts';
 
 import {
-  Home as HomePage,
-  Packages as PackagesPage,
-  Problems as ProblemsPage,
-  NotFoundCover as NotFoundCoverPage,
-  Solving as SolvingPage
+    Home as HomePage,
+    Packages as PackagesPage,
+    Problems as ProblemsPage,
+    NotFoundCover as NotFoundCoverPage,
+    Solving as SolvingPage,
+    Scoring as ScoringPage,
+    Assignments as AssignmentsPage, MainRoom
 } from './pages';
 import MainRoomPage from "./pages/MainRoomPage";
 import LoginPage from "./pages/LoginPage";
@@ -33,43 +35,78 @@ import ReviseQuestion from "./pages/ReviseQuestion";
 const Routes = () => {
   return (
     <Switch>
-      <Redirect exact from="/" to="/home" />
-      {/* ---------------------------------------------- */}
-      {/* Home */}
-      <RouteWithLayout
-        component={HomePage}
-        exact
-        layout={DefaultLayout}
-        path="/home"
-      />
-      {/* Packages */}
-      <RouteWithLayout
-        component={PackagesPage}
-        exact
-        layout={DefaultLayout}
-        path="/packages"
-      />
-      {/* Problems - 모든 문제 목록 */}
-      <RouteWithLayout
-        component={ProblemsPage}
-        exact
-        layout={DefaultLayout}
-        path="/problems"
-      />
-      {/* Problems - 특정 패키지의 문제 목록 */}
-      <RouteWithLayout
-        component={ProblemsPage}
-        exact
-        layout={DefaultLayout}
-        path="/problems/:packageCode"
-      />
-      {/* solving */}
-      <RouteWithLayout
-        component={SolvingPage}
-        exact
-        layout={DefaultLayout}
-        path="/solving"
-      />
+      <Redirect exact from="/" to="/mainroom" />
+        {/* ---------------------------------------------- */}
+        {/* Home */}
+        <RouteWithLayout
+            component={HomePage}
+            exact
+            layout={MinimalLayout}
+            path="/home"
+        />
+        {/* Packages */}
+        <RouteWithLayout
+            component={PackagesPage}
+            exact
+            layout={DefaultLayout}
+            path="/packages"
+        />
+        {/* Problems - 모든 문제 목록 */}
+        <RouteWithLayout
+            component={ProblemsPage}
+          exact
+          layout={DefaultLayout}
+          path="/problems"
+        />
+        {/* Problems - 특정 패키지의 문제 목록 */}
+        <RouteWithLayout
+          component={ProblemsPage}
+          exact
+          layout={DefaultLayout}
+           path="/problems/:package_code"
+         />
+        {/* Problems - 문제 풀기 */}
+        <RouteWithLayout
+            component={ProblemsPage}
+            exact
+            layout={DefaultLayout}
+            path="/problems/:package_code/:assignment_code"
+        />
+         {/* 문제 답안 작성 */}
+         <RouteWithLayout
+          component={SolvingPage}
+          exact
+          layout={DefaultLayout}
+          path="/solving/:problem_code/:assignment_code"
+         />
+         {/* 문제 답안 작성 - 미리보기 */}
+        <RouteWithLayout
+            component={SolvingPage}
+            exact
+            layout={DefaultLayout}
+            path="/solving/:problem_code"
+         />
+        {/* 채점 */}
+        <RouteWithLayout
+            component={ScoringPage}
+            exact
+            layout={DefaultLayout}
+            path="/scoring"
+        />
+        {/* 과제 목록 */}
+        <RouteWithLayout
+            component={AssignmentsPage}
+            exact
+            layout={DefaultLayout}
+            path="/assignments/:course_code"
+        />
+        {/* 강의실 */}
+        <RouteWithLayout
+            component={MainRoom}
+            exact
+            layout={DefaultLayout}
+            path="/mainroom"
+        />
 
       {/* ---------------------------------------------- */}
       {/* 홈 */}
@@ -133,7 +170,7 @@ const Routes = () => {
         component={MainRoomPage}
         exact
         layout={DefaultLayout}
-        path="/mainroom"
+        path="/mainroom_old"
       />
       {/* 질문목록 */}
       <RouteWithLayout

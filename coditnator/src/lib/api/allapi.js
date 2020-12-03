@@ -4,10 +4,22 @@ const ip = 'http://localhost:4000';
 //const address = ip.concat(" ", URL);
 
 //세션 정보
-export const getSession = () => client.get('/auth/session');
+//export const getSession = () => client.get('/auth/session');
+export const getSession = () => {
+    return {
+        data : {
+            user: {
+                code: 'USER000002'
+            },
+            auth: {
+                authority_code: 'AUTH000002'
+            }
+        }
+    }
+};
 //개인별 강의정보 받기
-export const getUserCourse = (user_code) =>
-  client.get(ip + '/testCourseProf/' + user_code);
+export const getUserCourse = async (user_code) =>
+  await client.get(ip + '/testCourseProf/' + user_code);
 //강좌별 강의정보 받기
 export const getCourse = (course_code) =>
   client.get(ip + '/testCourseProf/' + course_code);

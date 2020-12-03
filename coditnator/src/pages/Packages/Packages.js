@@ -16,7 +16,7 @@ import {
   SimpleModal
 } from '../../components';
 import AddPackage from '../AddPackage';
-import { getData } from '../../common'
+import { getData, deleteData } from '../../common'
 
 /* Data Import */
 import { rows } from './data/index';
@@ -52,22 +52,26 @@ class Packages extends React.Component {
   }
   /* Component Did Mount */
   componentDidMount() {
-    /*
-    getData('/api/package', [], (res) => {
-      this.setState({ bodys: res.data.success });
-    }, () => {
-      this.setState({ bodys: rows });
-    });
-     */
-    this.setState({ bodys: rows });
+    this.setBodys();
   }
 
   /* Method */
+  setBodys = async () => {
+    // Package 목록 정보 불러오기
+    await getData('/api/package', (res) => {
+      this.setState({ bodys: res.data.success });
+    }, (err) => {
+      this.setState({ bodys: [] });
+      console.log('Error ++++++++++');
+    });
+  };
+
   openAddPackageModal = () => {
     this.setState({ addPackageModal: true });
   };
   closeAddPackageModal = () => {
     this.setState({ addPackageModal: false });
+    this.setBodys();
   };
 
   openInfoPackageModal = () => {
@@ -75,6 +79,7 @@ class Packages extends React.Component {
   };
   closeInfoPackageModal = () => {
     this.setState({ infoPackageModal: false });
+    this.setBodys();
   };
 
   openDeletePackageDialog = () => {
@@ -84,37 +89,34 @@ class Packages extends React.Component {
     this.setState({ deletePackageDialog: false });
   };
 
-  customEvent = (code) => {
+  customEvent = (body) => {
     const { history } = this.props;
-    history.push('/problems/' + code);
+    history.push('/problems/' + body.code);
   }
 
-  deleteEvent = (code) => {
-    this.setState({ selectedCode: code });
+  deleteEvent = (body) => {
+    this.setState({ selectedCode: body.code });
     this.openDeletePackageDialog();
   };
 
   deleteAgree = () => {
-    this.state.bodys.map((body, index) => {
-      if(body.code === 'undefined') {
-        return null;
-      }
-      else if(body.code === this.state.selectedCode) {
-        let copyBodys = this.state.bodys;
-        copyBodys.splice(index, 1);
+    // Package 삭제
+    const packageCode = this.state.selectedCode;
+    deleteData(`/api/package/${packageCode}`, (res) => {
+      // Package 목록 정보 다시 불러오기
+      this.setBodys();
+      this.closeDeletePackageDialog();
+    }, (err) => {
 
-        this.setState({ bodys: copyBodys });
-      }
     });
-    this.closeDeletePackageDialog();
   };
 
   deleteDisagree = () => {
     this.closeDeletePackageDialog();
   };
 
-  infoEvent = (code) => {
-    this.setState({ selectedCode: code })
+  infoEvent = (body) => {
+    this.setState({ selectedCode: body.code })
     this.openInfoPackageModal();
   };
 

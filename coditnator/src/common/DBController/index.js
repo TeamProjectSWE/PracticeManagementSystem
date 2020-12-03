@@ -1,1 +1,1 @@
-export { getData, postData } from './DBController';
+export { getData, postData, putData, deleteData, solveFile, getSession } from './DBController';

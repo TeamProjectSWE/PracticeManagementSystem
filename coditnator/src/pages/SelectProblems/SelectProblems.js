@@ -11,6 +11,7 @@ import {Button} from "@material-ui/core";
 import {withStyles} from "@material-ui/core/styles";
 
 /* Custom Import */
+import {getData} from "../../common";
 
 /* Const */
 const useStyles = (thema) => ({
@@ -30,38 +31,39 @@ const useStyles = (thema) => ({
 class SelectProblems extends React.Component {
   /* State */
   state = {
-    selectList: []
+    selectList: [],
+    problemList : [],
   }
 
   /* Components */
 
   /* Method */
   componentDidMount() {
-
+    this.getProblemList()
   }
 
   getProblemList = () => {
-    return [
-      {code: 'PROB000001', name: '문제 1'},
-      {code: 'PROB000002', name: '문제 2'},
-      {code: 'PROB000003', name: '문제 3'},
-      {code: 'PROB000004', name: '문제 4'},
-      {code: 'PROB000005', name: '문제 5'},
-    ];
+    getData('/api/problem', (res) => {
+      this.setState({
+        problemList: res.data.success
+      })
+    }, (err) => {
+
+    });
   }
 
   isSelected = (problem) => {
     let isExist = false;
     this.state.selectList.map((p) => {
-      if(problem.code === p.code && problem.name === p.name)
+      if (problem.code === p.code && problem.name === p.name)
         isExist = true;
     });
     return isExist;
   }
 
   selectProblem = (problem) => {
-    if(!this.isSelected(problem))
-      this.setState({ selectList: [...this.state.selectList, problem] });
+    if (!this.isSelected(problem))
+      this.setState({selectList: [...this.state.selectList, problem]});
   }
 
   selectComplete = () => {
@@ -69,32 +71,33 @@ class SelectProblems extends React.Component {
     this.props.close();
   }
 
-  render () {
-    const { classes } = this.props;
-    const problemList = this.getProblemList();
+  render() {
+    const {classes} = this.props;
     return (
-      <div className={'select_problems'}>
-        <div className={'problem_icons'}>
-          {problemList.map((problem) => {
-            return <button onClick={() => { this.selectProblem(problem) }} className={this.isSelected(problem) ? 'problem selected' : 'problem'}>
-              <em>{problem.name}</em>
-            </button>
-          })}
+        <div className={'select_problems'}>
+          <div className={'problem_icons'}>
+            {this.state.problemList.map((problem) => {
+              return <button onClick={() => {
+                this.selectProblem(problem)
+              }} className={this.isSelected(problem) ? 'problem selected' : 'problem'}>
+                <em>{problem.name}</em>
+              </button>
+            })}
+          </div>
+          <div className={'btn_box'}>
+            <Button
+                onClick={this.selectComplete}
+                classes={{
+                  root: classes.root, // class name, e.g. `classes-nesting-root-x`
+                  label: classes.label, // class name, e.g. `classes-nesting-label-x`
+                }}
+                variant="contained"
+                color="secondary"
+            >
+              <em>선택 완료</em>
+            </Button>
+          </div>
         </div>
-        <div className={'btn_box'}>
-          <Button
-            onClick={this.selectComplete}
-            classes={{
-              root: classes.root, // class name, e.g. `classes-nesting-root-x`
-              label: classes.label, // class name, e.g. `classes-nesting-label-x`
-            }}
-            variant="contained"
-            color="secondary"
-          >
-            <em>선택 완료</em>
-          </Button>
-        </div>
-      </div>
     );
   }
 }
@@ -105,4 +108,4 @@ SelectProblems.propTypes = {
   code: PropTypes.string.isRequired
 };
 
-export default withStyles(useStyles, { withTheme: true })(SelectProblems);
+export default withStyles(useStyles, {withTheme: true})(SelectProblems);

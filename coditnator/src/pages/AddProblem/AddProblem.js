@@ -25,7 +25,7 @@ import { withStyles } from '@material-ui/core/styles';
 import {SimpleModal, SimpleSelect, Tag} from "../../components";
 import SimpleStepper from "../../components/SimpleStepper";
 import {SelectTags} from "../index";
-import {rows} from "../Problems/data";
+import { getData, postData, putData, deleteData } from '../../common'
 
 /* Const */
 const useStyles = (thema) => ({
@@ -50,9 +50,10 @@ class AddProblem extends React.Component {
     problemDesc: '',
     problemRest: '',
     problemEntry: '',
+    problemReturn: '',
     problemAnswer: '',
     problemParams: [],
-    problemTestCase: [],
+    problemTestCases: [],
     problemTags: [],
     problemChoices: [],
     step: 0,
@@ -63,17 +64,237 @@ class AddProblem extends React.Component {
 
   /* Method */
   /* Component Did Mount */
-  componentDidMount() {
+  async componentDidMount() {
     if(this.isExistCode()) {
-      this.setState({ problemType: 'programming' });
+      let problemCode = this.props.code;
+
+      await getData(`/api/problem/${problemCode}`, async (res) => {
+        const data = res.data.success;
+        let parsed = JSON.parse(data.description);
+
+        this.setState({
+          problemType: data.type,
+          problemName: data.name,
+          problemDesc: parsed.text,
+          problemRest: data.restriction,
+          problemEntry: data.entry,
+          problemReturn: JSON.parse(data.return),
+          problemAnswer: parsed.answer !== 'undefined' ? parsed.answer : '',
+          problemParams: this.parseParams(data),
+          problemTestCases: await this.getTestCases(problemCode),
+          problemTags: data.tags,
+          problemChoices: parsed.choices !== 'undefined' ? parsed.choices : [],
+        });
+      }, (err) => {
+
+      });
     }
   }
 
-  addProblemToDB = () => {
+  parseParams = (data) => {
+    let params = [];
+    let parameters = JSON.parse(data.parameters);
+    let parameterNames = JSON.parse(data.parameter_names);
+
+    parameters.map((p, index) => {
+      params.push({
+        type: parameters[index],
+        name: parameterNames[index]
+      });
+    });
+
+    return params;
+  };
+
+  getTestCases = async (problemCode) => {
+    let data = [];
+    await getData(`/api/problem/${problemCode}/io/~`, (res) => {
+      data = res.data.success;
+    }, (err) => {
+
+    });
+    return data;
+  };
+
+  addProblemComplete = () => {
+    // Problem 추가
+    let sendData = {
+      type: this.state.problemType,
+      name: this.state.problemName,
+      description: '',
+      restriction: undefined,
+      entry: undefined,
+      return: undefined,
+      parameters: undefined,
+      parameter_names: undefined
+    };
+
+    let obj;
+    switch(this.state.problemType) {
+      case 'programming':
+        let parameters = [];
+        let parameterNames = [];
+
+        obj = {
+          text: this.state.problemDesc
+        };
+
+        this.state.problemParams.map((param) => {
+          parameters.push(param.type);
+          parameterNames.push(param.name);
+        });
+
+        sendData.restriction = this.state.problemRest;
+        sendData.entry = this.state.problemEntry;
+        sendData.return = JSON.stringify(this.state.problemReturn);
+        sendData.parameters = JSON.stringify(parameters);
+        sendData.parameter_names = JSON.stringify(parameterNames);
+        break;
+      case 'short':
+        obj = {
+          text: this.state.problemDesc,
+          answer: this.state.problemAnswer
+        };
+        break;
+      case 'multiple':
+        obj = {
+          text: this.state.problemDesc,
+          choices: this.state.problemChoices,
+          answer: this.state.problemAnswer
+        };
+        break;
+    }
+    sendData.description = JSON.stringify(obj);
+
+    postData('/api/problem', sendData, (res) => {
+      let newProblemCode = res.data.success;
+      if(this.state.problemType === 'programming') {
+        // 테스트 케이스 추가
+        this.addNewTestCase(newProblemCode);
+        // 태그 추가
+        this.state.problemTags.map((tag) => {
+          this.addNewTags(newProblemCode, tag);
+        });
+      }
+      setTimeout(() => {
+        this.props.close()
+      }, 500);
+    }, (err) => {
+
+    });
+
     this.props.close(); // Modal Close
   };
-  modifyProblemToDB = () => {
-    this.props.close(); // Modal Close
+  addNewTestCase = (newProblemCode) => {
+    // 테스트 케이스 추가
+    let sendData = {
+      cases: this.state.problemTestCases
+    };
+
+
+    postData(`/api/problem/${newProblemCode}/io`, sendData, (res) => {
+
+    }, (err) => {
+
+    });
+  };
+  addNewTags = (newProblemCode, tag) => {
+    // 태그 추가
+    putData(`/api/problem/${newProblemCode}/tag/${tag}`, {}, (res) => {
+
+    }, (err) => {
+
+    });
+  };
+
+  modifyProblemComplete = () => {
+    // Problem 수정
+    let sendData = {
+      type: this.state.problemType,
+      name: this.state.problemName,
+      description: '',
+      restriction: undefined,
+      entry: undefined,
+      return: undefined,
+      parameters: undefined,
+      parameter_names: undefined
+    };
+
+    let obj;
+    switch(this.state.problemType) {
+      case 'programming':
+        let parameters = [];
+        let parameterNames = [];
+
+        obj = {
+          text: this.state.problemDesc
+        };
+
+        this.state.problemParams.map((param) => {
+          parameters.push(param.type);
+          parameterNames.push(param.name);
+        });
+
+        sendData.restriction = this.state.problemRest;
+        sendData.entry = this.state.problemEntry;
+        sendData.return = JSON.stringify(this.state.problemReturn);
+        sendData.parameters = JSON.stringify(parameters);
+        sendData.parameter_names = JSON.stringify(parameterNames);
+        break;
+      case 'short':
+        obj = {
+          text: this.state.problemDesc,
+          answer: this.state.problemAnswer
+        };
+        break;
+      case 'multiple':
+        obj = {
+          text: this.state.problemDesc,
+          choices: this.state.problemChoices,
+          answer: this.state.problemAnswer
+        };
+        break;
+    }
+    sendData.description = JSON.stringify(obj);
+
+
+    const problemCode = this.props.code;
+    putData(`/api/problem/${problemCode}`, sendData, (res) => {
+      if(this.state.problemType === 'programming') {
+        // 테스트 케이스 수정
+        this.addNewTestCase(problemCode);
+        // 태그 수정 (모든 태그 삭제 후 재추가)
+        deleteData(`/api/problem/${problemCode}/tag`, (res) => {
+          this.state.problemTags.map((tag) => {
+            this.addNewTags(problemCode, tag);
+          });
+        }, (err) => {
+
+        });
+      }
+      setTimeout(() => {
+        this.props.close()
+      }, 500);
+    }, (err) => {
+
+    });
+  }
+
+  getVariableTypes = () => {
+    const items = [
+      { label: 'Int32', value: 'i32' },
+      { label: 'Int64', value: 'i64' },
+      { label: 'Float32', value: 'f32' },
+      { label: 'Float64', value: 'f64' },
+      { label: 'String', value: 'str' },
+
+      { label: 'Int32 Array', value: '[i32]' },
+      { label: 'Int64 Array', value: '[i64]' },
+      { label: 'Float32 Array', value: '[f32]' },
+      { label: 'Float64 Array', value: '[f64]' },
+      { label: 'String Array', value: '[str]' },
+    ];
+    return items;
   }
 
   changeStep = (now) => {
@@ -82,6 +303,9 @@ class AddProblem extends React.Component {
 
   isExistCode = () => {
     return typeof this.props.code === 'string';
+  }
+  isExistType = () => {
+    return typeof this.props.type === 'string';
   }
 
   openSelectTagsModal = () => {
@@ -96,7 +320,7 @@ class AddProblem extends React.Component {
   };
   pushParamsRow = () => {
     let copyParams = this.state.problemParams;
-    copyParams.push({ type: 'i32', name: '' });
+    copyParams.push({ type: this.getVariableTypes()[0].value, name: '' });
     this.setState({ problemParams: copyParams });
   };
   popParamsRow = () => {
@@ -105,14 +329,14 @@ class AddProblem extends React.Component {
     this.setState({ problemParams: copyParams });
   };
   pushTestCaseRow = () => {
-    let copyTestCase = this.state.problemTestCase;
-    copyTestCase.push({ input: '', output: '', visible: 1 });
-    this.setState({ problemTestCase: copyTestCase });
+    let copyTestCase = this.state.problemTestCases;
+    copyTestCase.push({ input: '', output: '', visible: true });
+    this.setState({ problemTestCases: copyTestCase });
   };
   popTestCaseRow = () => {
-    let copyTestCase = this.state.problemTestCase;
+    let copyTestCase = this.state.problemTestCases;
     copyTestCase.pop();
-    this.setState({ problemTestCase: copyTestCase });
+    this.setState({ problemTestCases: copyTestCase });
   };
   pushChoiceRow = () => {
     let copyChoices = this.state.problemChoices;
@@ -208,13 +432,14 @@ class AddProblem extends React.Component {
           {this.state.step === 1 ? this.printDescForm() : null}
           {this.state.step === 2 ? this.printRestForm() : null}
           {this.state.step === 3 ? this.printEntryForm() : null}
-          {this.state.step === 4 ? this.printParamForm() : null}
-          {this.state.step === 5 ? this.printTestCaseForm() : null}
-          {this.state.step === 6 ? this.printSelectTagForm() : null}
-          {this.state.step === 7 ? this.printCompleteBtn() : null}
+          {this.state.step === 4 ? this.printReturnForm() : null}
+          {this.state.step === 5 ? this.printParamForm() : null}
+          {this.state.step === 6 ? this.printTestCaseForm() : null}
+          {this.state.step === 7 ? this.printSelectTagForm() : null}
+          {this.state.step === 8 ? this.printCompleteBtn() : null}
         </table>
         <div className={'stepper'}>
-          <SimpleStepper maxSteps={8} next={this.changeStep} back={this.changeStep} />
+          <SimpleStepper maxSteps={9} next={this.changeStep} back={this.changeStep} />
         </div>
       </div>
     );
@@ -336,6 +561,42 @@ class AddProblem extends React.Component {
       </tbody>
     );
   };
+  printReturnForm = () => {
+    return (
+        <tbody>
+        <tr>
+          <th><em>결과값 자료형</em></th>
+        </tr>
+        <tr>
+          <td>
+            { this.printReturnFormSub() }
+          </td>
+        </tr>
+        </tbody>
+    );
+  };
+  printReturnFormSub = () => {
+    const items = this.getVariableTypes();
+    return (
+        <table className={'sub_table return'}>
+          <tbody>
+          <tr>
+            <th><em>Type</em></th>
+            <td>
+              <SimpleSelect
+                  start={this.state.problemReturn}
+                  title={'Type'}
+                  items={items}
+                  changeEvent={(event) => {
+                    this.setState({ problemReturn: event.target.value });
+                  }}
+              />
+            </td>
+          </tr>
+          </tbody>
+        </table>
+    );
+  };
   printParamForm = () => {
     return (
       <tbody>
@@ -355,19 +616,7 @@ class AddProblem extends React.Component {
     );
   };
   printParamFormSub = () => {
-    const items = [
-      { label: 'Int32', value: 'i32' },
-      { label: 'Int64', value: 'i64' },
-      { label: 'Float32', value: 'f32' },
-      { label: 'Float64', value: 'f64' },
-      { label: 'String', value: 'str' },
-
-      { label: 'Int32 Array', value: '[i32]' },
-      { label: 'Int64 Array', value: '[i64]' },
-      { label: 'Float32 Array', value: '[f32]' },
-      { label: 'Float64 Array', value: '[f64]' },
-      { label: 'String Array', value: '[str]' },
-    ];
+    const items = this.getVariableTypes();
     return (
       <table className={'sub_table params'}>
         <tbody>
@@ -471,10 +720,11 @@ class AddProblem extends React.Component {
     );
   };
   printTestCaseFormSub = () => {
+    console.log(this.state.problemTestCases);
     return (
       <table className={'sub_table test_case'}>
         <tbody>
-        {this.state.problemTestCase.map((testCase, index) => {
+        {this.state.problemTestCases.map((testCase, index) => {
           return (
             <tr>
               <th><em>Input</em></th>
@@ -483,13 +733,13 @@ class AddProblem extends React.Component {
                   type={'text'}
                   className={'design_form input_A necessary name'}
                   placeholder={'Input'}
-                  value={this.state.problemTestCase[index].input}
+                  value={this.state.problemTestCases[index].input}
                   onChange={(event) => {
-                    let copyTestCase = this.state.problemTestCase;
+                    let copyTestCase = this.state.problemTestCases;
                     testCase.input = event.target.value;
                     copyTestCase[index] = testCase;
 
-                    this.setState({ problemTestCase: copyTestCase });
+                    this.setState({ problemTestCases: copyTestCase });
                   }}
                 />
               </td>
@@ -499,13 +749,13 @@ class AddProblem extends React.Component {
                   type={'text'}
                   className={'design_form input_A necessary name'}
                   placeholder={'Output'}
-                  value={this.state.problemTestCase[index].output}
+                  value={this.state.problemTestCases[index].output}
                   onChange={(event) => {
-                    let copyTestCase = this.state.problemTestCase;
+                    let copyTestCase = this.state.problemTestCases;
                     testCase.output = event.target.value;
                     copyTestCase[index] = testCase;
 
-                    this.setState({ problemTestCase: copyTestCase });
+                    this.setState({ problemTestCases: copyTestCase });
                   }}
                 />
               </td>
@@ -513,13 +763,13 @@ class AddProblem extends React.Component {
               <td>
                 <Checkbox
                   inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
-                  checked={this.state.problemTestCase[index].visible}
+                  checked={this.state.problemTestCases[index].visible}
                   onChange={(event) => {
-                    let copyTestCase = this.state.problemTestCase;
+                    let copyTestCase = this.state.problemTestCases;
                     testCase.visible = event.target.checked ? 1 : 0;
                     copyTestCase[index] = testCase;
 
-                    this.setState({ problemTestCase: copyTestCase });
+                    this.setState({ problemTestCases: copyTestCase });
                   }}
                 />
               </td>
@@ -606,7 +856,7 @@ class AddProblem extends React.Component {
       <tr>
         <td>
           <Button
-            onClick={this.isExistCode() ? this.modifyProblemToDB : this.addProblemToDB}
+            onClick={this.isExistCode() ? this.modifyProblemComplete : this.addProblemComplete}
             classes={{
               root: classes.root, // class name, e.g. `classes-nesting-root-x`
               label: classes.label, // class name, e.g. `classes-nesting-label-x`
@@ -623,7 +873,6 @@ class AddProblem extends React.Component {
   }
 
   render () {
-
     return (
       <div className={'page_modal add_problem_modal'}>
         { this.state.problemType === '' ? this.printTypeSelectForm() : this.printProblemForm() }
@@ -634,7 +883,8 @@ class AddProblem extends React.Component {
 
 AddProblem.propTypes = {
   close: PropTypes.func.isRequired,
-  code: PropTypes.string
+  code: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default withStyles(useStyles, { withTheme: true })(AddProblem);

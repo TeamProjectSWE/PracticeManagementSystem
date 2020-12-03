@@ -7,19 +7,22 @@ export const pages = {
       key: 'room',
       title: '내 강의실',
       icon: 'mdiBookmarkMultipleOutline',
-      href: '/mainroom'
+      href: '/mainroom',
+      level: '1'
     },
     {
       key: 'packages',
       title: '문제 패키지 관리',
       icon: 'mdiFolderGoogleDrive',
-      href: '/packages'
+      href: '/packages',
+      level: '2'
     },
     {
       key: 'problems',
       title: '문제 관리',
       icon: 'mdiCodeBraces',
-      href: '/problems'
+      href: '/problems',
+      level: '2'
     }
   ]
 };

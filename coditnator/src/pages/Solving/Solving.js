@@ -3,47 +3,314 @@ import React from 'react';
 /* Design Import */
 import './Solving.scss';
 
+/* Icon Import */
+
+/* Material Import */
+import { withStyles } from '@material-ui/core/styles';
+import {
+    Button,
+    FormControl,
+    Radio,
+    RadioGroup,
+    FormControlLabel,
+    FormLabel
+} from '@material-ui/core';
+import {
+    Add as AddIcon
+} from '@material-ui/icons';
+
+/* Custom Import */
+import { getData, postData } from '../../common'
+import {SimpleSelect} from "../../components";
+import { solveFile } from '../../common'
+
+/* Const */
+const useStyles = (thema) => ({
+    root: {
+        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        borderRadius: 3,
+        border: 0,
+        color: 'white',
+        padding: '5px 10px',
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    },
+    label: {
+        textTransform: 'capitalize',
+    },
+});
+
 class Solving extends React.Component {
-    render() {
+    /* State */
+    state = {
+        problemType: '',
+        problemName: '',
+        problemDesc: '',
+        problemRest: '',
+        problemEntry: '',
+        problemAnswer: '',
+        problemTags: [],
+        problemChoices: [],
+        selectedLanguage: 'python',
+        code: '',
+        executeResult: ''
+    }
+
+    /* Components */
+
+    /* Method */
+    async componentDidMount() {
+        const { match } = this.props;
+        let problemCode = match.params.problem_code;
+
+        await getData(`/api/problem/${problemCode}`, async (res) => {
+            const data = res.data.success;
+            let parsed = JSON.parse(data.description);
+
+            this.setState({
+                problemType: data.type,
+                problemName: data.name,
+                problemDesc: parsed.text,
+                problemRest: data.restriction,
+                problemEntry: data.entry,
+                problemAnswer: parsed.answer !== 'undefined' ? parsed.answer : '',
+                problemTags: data.tags,
+                problemChoices: parsed.choices !== 'undefined' ? parsed.choices : [],
+            });
+            this.getDefaultCodeForm();
+        }, (err) => {
+
+        });
+    }
+
+    // 테스트 실행
+    testStart = () => {
+        const { match } = this.props;
+        let code = this.state.code.split('\n');
+        let srcFile = new File(code, "fileName")
+        solveFile(match.params.problem_code, srcFile, this.state.selectedLanguage, (res) => {
+            const cases = res.data.success.cases;
+            let text = '';
+
+            cases.map((res, index) => {
+                text += 'Test case ' + (index+1) + ' : ' + (res.result ? '통과' : '실패') + '\n';
+            })
+            this.setState({ executeResult: text });
+        }, (err) => {
+
+        });
+    };
+
+    // 채점 및 제출
+    sendResult = () => {
+        const { match, history } = this.props;
+        const assignmentCode = match.params.assignment_code;
+        const problemCode = match.params.problem_code;
+
+
+        let srcFile = new File(this.state.code.split('\n'), 'test.py');
+        let formData = new FormData()
+        formData.append('source', srcFile);
+        formData.append('language', this.state.selectedLanguage);
+
+        postData(`/api/assignment/${assignmentCode}/submission/${problemCode}`, formData, (res) => {
+            history.goBack();
+        }, (err) => {
+
+        });
+    };
+
+    getLanguageTypes = () => {
+        let items = [
+            { label: 'Python', value: 'python' }
+        ];
+        return items;
+    }
+
+    getDefaultCodeForm = () => {
+        const { match } = this.props;
+        getData(`/api/problem/${match.params.problem_code}/signature/${this.state.selectedLanguage}`, (res) => {
+            this.setState({ code: res.data.success });
+        }, (err) => {
+            this.setState({ code: '' });
+        });
+    }
+
+    onChangeCode = (event) => {
+        this.setState({ code: event.target.value });
+    }
+    onChangeResult = (event) => {
+        this.setState({ executeResult: event.target.value });
+    }
+
+    printSolvingForm = () => {
+        switch(this.state.problemType) {
+            case 'programming': // 프로그래밍 문제
+                return this.printProgrammingSolvingForm();
+            case 'short': // 주관식 문제
+                return this.printShortSolvingForm();
+            case 'multiple': // 객관식 문제
+                return this.printMultipleSolvingForm();
+            default:
+                return null;
+        }
+    };
+
+    printProgrammingSolvingForm = () => {
+        /* Props */
+        const { classes } = this.props;
+
+        const items = this.getLanguageTypes();
+
         return (
             <div className="page_wrap layout solving">
                 <div className="box problem_title flex-align middle">
-                    <em>문자열 압축</em>
-                    <select className="design_select_A">
-                        <option>C++</option>
-                        <option>Java</option>
-                        <option>JavaScript</option>
-                        <option>Python</option>
-                    </select>
+                    <em>{ this.state.problemName }</em>
+                    <span className={'select_language'}>
+                        <SimpleSelect
+                            title={'Language'}
+                            items={items}
+                            start={this.state.selectedLanguage}
+                            changeEvent={(event) => {
+                                this.setState({ selectedLanguage: event.target.value });
+                            }}
+                        />
+                    </span>
                 </div>
                 <div className="box problem_desc">
                     <em className="title">문제 설명</em>
-                    <em className="description">
-                        데이터 처리 전문가가 되고 싶은 어피치는 문자열을 압축하는 방법에 대해 공부를 하고 있습니다. 최근에 대량의 데이터 처리를 위한 간단한 비손실 압축 방법에 대해 공부를 하고 있는데, 문자열에서 같은 값이 연속해서 나타나는 것을 그 문자의 개수와 반복되는 값으로 표현하여 더 짧은 문자열로 줄여서 표현하는 알고리즘을 공부하고 있습니다.<br />
-                        간단한 예로 aabbaccc의 경우 2a2ba3c(문자가 반복되지 않아 한번만 나타난 경우 1은 생략함)와 같이 표현할 수 있는데, 이러한 방식은 반복되는 문자가 적은 경우 압축률이 낮다는 단점이 있습니다. 예를 들면, abcabcdede와 같은 문자열은 전혀 압축되지 않습니다. 어피치는 이러한 단점을 해결하기 위해 문자열을 1개 이상의 단위로 잘라서 압축하여 더 짧은 문자열로 표현할 수 있는지 방법을 찾아보려고 합니다.<br /><br />
-                        예를 들어, ababcdcdababcdcd의 경우 문자를 1개 단위로 자르면 전혀 압축되지 않지만, 2개 단위로 잘라서 압축한다면 2ab2cd2ab2cd로 표현할 수 있습니다. 다른 방법으로 8개 단위로 잘라서 압축한다면 2ababcdcd로 표현할 수 있으며, 이때가 가장 짧게 압축하여 표현할 수 있는 방법입니다.<br /><br />
-                        다른 예로, abcabcdede와 같은 경우, 문자를 2개 단위로 잘라서 압축하면 abcabc2de가 되지만, 3개 단위로 자른다면 2abcdede가 되어 3개 단위가 가장 짧은 압축 방법이 됩니다. 이때 3개 단위로 자르고 마지막에 남는 문자열은 그대로 붙여주면 됩니다.<br /><br />
-                        압축할 문자열 s가 매개변수로 주어질 때, 위에 설명한 방법으로 1개 이상 단위로 문자열을 잘라 압축하여 표현한 문자열 중 가장 짧은 것의 길이를 return 하도록 solution 함수를 완성해주세요.
-                    </em>
+                    <div className="description">
+                        <em>{ this.state.problemDesc }</em>
+                    </div>
+                    <em className="title">제약조건</em>
+                    <div className="description">
+                        <em>{ this.state.problemRest }</em>
+                    </div>
                 </div>
                 <div className="box code_title flex-align middle"><em>Solution</em></div>
                 <div className="box code">
-                    <textarea>
-                        Code...
-                    </textarea>
+                    <textarea
+                        placeholder={'Code...'}
+                        value={this.state.code}
+                        onChange={this.onChangeCode}
+                    />
                 </div>
                 <div className="box execute_title flex-align middle"><em>Execute Result</em></div>
                 <div className="box result">
-                    <textarea>
-                        Result Log...
-                    </textarea>
+                    <textarea
+                        placeholder={'Code...'}
+                        value={this.state.executeResult}
+                        onChange={this.onChangeResult}
+                    />
                 </div>
                 <div className="box buttons flex-align middle">
-                    <button className="design_btn_A">채점 및 제출</button>
+                    <Button
+                        onClick={this.testStart}
+                        classes={{
+                            root: classes.root, // class name, e.g. `classes-nesting-root-x`
+                            label: classes.label, // class name, e.g. `classes-nesting-label-x`
+                        }}
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<AddIcon>send</AddIcon>}
+                    >
+                        테스트 실행
+                    </Button>
+                    <Button
+                        onClick={this.sendResult}
+                        classes={{
+                            root: classes.root, // class name, e.g. `classes-nesting-root-x`
+                            label: classes.label, // class name, e.g. `classes-nesting-label-x`
+                        }}
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<AddIcon>send</AddIcon>}
+                    >
+                        채점 및 제출
+                    </Button>
                 </div>
             </div>
         );
     };
+
+    printShortSolvingForm = () => {
+        const { classes } = this.props;
+        return (
+            <div className="page_wrap layout solving">
+                <div className={'problem_title'}>
+                    <em>{ this.state.problemName }</em>
+                </div>
+                <div className={'problem_desc'}>
+                    <em>{ this.state.problemDesc }</em>
+                </div>
+                <div className={'problem_answer'}>
+                    <textarea
+                        className={'design_form textarea_A necessary description'}
+                        placeholder={'정답'}
+                        value={this.state.code}
+                        onChange={(e) => {
+                            this.setState({ code: e.target.value });
+                        }}
+                    />
+                </div>
+                <div className={'problem_send'}>
+                    <Button
+                        onClick={this.sendResult}
+                        classes={{
+                            root: classes.root, // class name, e.g. `classes-nesting-root-x`
+                            label: classes.label, // class name, e.g. `classes-nesting-label-x`
+                        }}
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<AddIcon>send</AddIcon>}
+                    >
+                        채점 및 제출
+                    </Button>
+                </div>
+            </div>
+        );
+    };
+
+    printMultipleSolvingForm = () => {
+        const { classes } = this.props;
+        return (
+            <div className="page_wrap layout solving">
+                <div className={'problem_title'}>
+                    <em>{ this.state.problemName }</em>
+                </div>
+                <div className={'problem_desc'}>
+                    <div>{ this.state.problemDesc }</div>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Gender</FormLabel>
+                        <RadioGroup aria-label="gender" name="gender1" value={this.state.code} onChange={(e) => {
+                            this.setState({ code: e.target.value })
+                        }}>
+                            {this.state.problemChoices.map((choice, index) => {
+                                return <FormControlLabel value={index} control={<Radio />} label={choice} />
+                            })}
+                        </RadioGroup>
+                    </FormControl>
+                </div>
+                <div className={'problem_send'}>
+                    <Button
+                        onClick={this.sendResult}
+                        classes={{
+                            root: classes.root, // class name, e.g. `classes-nesting-root-x`
+                            label: classes.label, // class name, e.g. `classes-nesting-label-x`
+                        }}
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<AddIcon>send</AddIcon>}
+                    >
+                        채점 및 제출
+                    </Button>
+                </div>
+            </div>
+        );
+    };
+
+    render() {
+        return this.state.problemType !== '' ? this.printSolvingForm() : null;
+    };
 }
 
-export default Solving;
+export default withStyles(useStyles, { withTheme: true })(Solving);

@@ -22,10 +22,10 @@ import {
 import { withStyles } from '@material-ui/core/styles';
 
 /* Custom Import */
-import {SimpleModal, SimpleSelect, Tag} from "../../components";
+import {SimpleModal} from "../../components";
 import SimpleStepper from "../../components/SimpleStepper";
-import {SelectProblems, SelectTags} from "../index";
-import {rows} from "../Problems/data";
+import {SelectProblems} from "../index";
+import { getData, postData, putData } from '../../common'
 
 /* Const */
 const useStyles = (thema) => ({
@@ -56,16 +56,100 @@ class AddPackage extends React.Component {
 
   /* Method */
   /* Component Did Mount */
-  componentDidMount() {
+  async componentDidMount() {
     if(this.isExistCode()) {
-
+      const packageCode = this.props.code;
+      await getData(`/api/package/${packageCode}`, (res) => {
+        const data = res.data.success;
+        this.setState({
+          packageName: data.name,
+          packageDesc: data.description,
+        });
+        this.setPackageProblems();
+      }, (err) => {
+        console.log('Error ++++++++++');
+      });
     }
   }
 
+  setPackageProblems = async () => {
+    const packageCode = this.props.code;
+    let data = [];
+    await getData(`/api/package/${packageCode}/problem`, (res) => {
+      const data = res.data.success;
+      this.setState({
+        packageProblems: data,
+      });
+    }, (err) => {
+      console.log('Error ++++++++++');
+    });
+  };
+
   addPackageToDB = () => {
+    // Package 추가 (이름, 설명)
+    let sendData = {
+      name: this.state.packageName,
+      description: this.state.packageDesc
+    }
+
+    console.log('+++++++++++++++++++++++');
+    console.log(sendData);
+    console.log('+++++++++++++++++++++++');
+
+    postData('/api/package', sendData, (res) => {
+
+    }, (err) => {
+
+    });
+
     this.props.close(); // Modal Close
   };
   modifyPackageToDB = () => {
+    // Package 수정 (이름, 설명)
+    let sendData = {
+      name: this.state.packageName,
+      description: this.state.packageDesc
+    };
+
+    console.log('+++++++++++++++++++++++');
+    console.log(sendData);
+    console.log('+++++++++++++++++++++++');
+
+    const packageCode = this.props.code;
+    putData(`/api/package/${packageCode}`, sendData, (res) => {
+      console.log('Complete ++++++++++');
+    }, (err) => {
+
+    });
+
+    // Package 수정 (Package 에 속하는 문제 추가)
+    let problems = [];
+    this.state.packageProblems.map((problem) => {
+      problems.push(problem.code);
+    });
+
+    sendData = {
+      problems: problems
+    };
+    console.log('+++++++++++++++++++++++');
+    console.log(sendData);
+    console.log('+++++++++++++++++++++++');
+
+    postData(`/api/package/${packageCode}/problem`, sendData, (res) => {
+      /*
+      {
+        total : true,
+            each : [{
+        success : {},
+        fail :
+      }]
+      }
+      */
+    }, (err) => {
+
+    });
+
+
     this.props.close(); // Modal Close
   }
 
@@ -135,7 +219,7 @@ class AddPackage extends React.Component {
     return (
       <tbody>
       <tr>
-        <th><em>문제 설명</em></th>
+        <th><em>패키지 설명</em></th>
       </tr>
       <tr>
         <td>

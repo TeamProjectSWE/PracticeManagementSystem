@@ -1,7 +1,7 @@
 import React from 'react';
 
 /* Design Import */
-import './SimpleStepper.scss.scss';
+import './SimpleStepper.scss';
 
 /* Icon Import */
 

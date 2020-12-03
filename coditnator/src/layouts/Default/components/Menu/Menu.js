@@ -7,13 +7,15 @@ import Logo from '../../../../images/logo/logo.png';
 import './Menu.scss';
 
 const Menu = props => {
-  const { pages } = props;
+  const { pages, level } = props;
 
   /* Component */
   const List = props => {
     const { data } = props;
-    if(data.title === undefined || data.href === undefined || data.key === undefined)
-      return <li key={'undefined'} />;
+    if(data.title === undefined || data.href === undefined || data.key === undefined || data.level === undefined)
+      return null;
+    if(data.level > level)
+      return null;
 
     return (
       <Link to={data.href}>
@@ -63,7 +65,8 @@ const Menu = props => {
 };
 
 Menu.propTypes = {
-  pages: PropTypes.object.isRequired
+  pages: PropTypes.object.isRequired,
+  level: PropTypes.number.isRequired
 };
 
 export default Menu;
