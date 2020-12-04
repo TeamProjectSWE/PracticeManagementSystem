@@ -39,7 +39,7 @@ export default class App extends Component {
         // <BrowserRouter history={browserHistory} basename='/static'>
         return (
           <ThemeProvider theme={theme}>
-              <BrowserRouter history={browserHistory}>
+              <BrowserRouter history={browserHistory} basename='/static'>
                   <Routes />
               </BrowserRouter>
           </ThemeProvider>

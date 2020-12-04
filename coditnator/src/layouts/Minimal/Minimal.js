@@ -5,9 +5,8 @@ const Minimal = props => {
     const { children, className } = props;
 
     return (
-        <div className={className}>
-            Minimal Layer
-            <main>{children}</main>
+        <div className={'wrap'}>
+            <main className={'wrap'}>{children}</main>
         </div>
     );
 };

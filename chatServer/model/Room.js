@@ -4,7 +4,6 @@ const pool = mariadb.createPool(config());
 const emitter = require('../chatting/roomEvent');
 const roomEmitter = emitter.roomEmitter;
 
-
 roomEmitter.addListener('createRoom',(data)=>{
 })
 

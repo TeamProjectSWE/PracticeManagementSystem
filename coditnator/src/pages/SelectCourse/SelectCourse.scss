@@ -1,0 +1,20 @@
+@import 'src/assets/scss/colors';
+
+.select_tags {
+  width: 700px;
+  & > .tag_icons > .tag {
+    padding: 15px;
+    margin: 20px 5px;
+    border-radius: 10px;
+    background-color: $color-lightGray;
+    border: 0;
+
+    &.selected {
+      background-color: $color-gray;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

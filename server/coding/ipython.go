@@ -19,6 +19,26 @@ type Python struct {
 	version *semver.Version
 }
 
+func (s *Python) Signature(method string, params []Type, ret Type, names []string) string {
+	var builder strings.Builder
+	builder.WriteString(fmt.Sprintf(`def %s`, method))
+	// param
+	var pnames = make([]string, len(params))
+	for i := range params {
+		if len(names) > i {
+			pnames[i] = names[i]
+		} else {
+			pnames[i] = fmt.Sprintf("param%d", i)
+		}
+	}
+	builder.WriteString("(")
+	builder.WriteString(strings.Join(pnames, ", "))
+	builder.WriteString("):\n")
+	//
+	builder.WriteString("    return None")
+	return builder.String()
+}
+
 type PythonInstance struct {
 	src    []byte
 	method string
@@ -173,7 +193,7 @@ func (s *PythonInstance) Valid(params []Value) error {
 	return nil
 }
 func (s *PythonInstance) Run(params []Value) (Value, error) {
-	if err := s.Valid(params); err != nil{
+	if err := s.Valid(params); err != nil {
 		return nil, err
 	}
 	//

@@ -8,13 +8,15 @@ import { mdiBookmarkMultipleOutline, mdiFolderGoogleDrive, mdiCodeBraces } from 
 import './SimpleMenu.scss';
 
 const SimpleMenu = props => {
-  const { pages } = props;
+  const { pages, level } = props;
 
   /* Component */
   const List = props => {
     const { data } = props;
-    if(data.icon === undefined || data.href === undefined || data.key === undefined)
-      return <li key={'undefined'} />;
+    if(data.icon === undefined || data.href === undefined || data.key === undefined || data.level === undefined)
+      return null;
+    if(data.level > level)
+      return null;
 
     let iconPath;
     switch (data.icon){
@@ -80,6 +82,7 @@ const SimpleMenu = props => {
 
 SimpleMenu.propTypes = {
   pages: PropTypes.object.isRequired,
+  level: PropTypes.number.isRequired
 };
 
 export default SimpleMenu;

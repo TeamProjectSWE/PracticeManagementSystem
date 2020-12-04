@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<script>
+    var ws = undefined
+</script>
+<input type="text" id="target" placeholder="방 코드">
+<button onclick="{
+    if (ws !== undefined){
+        ws.close()
+    }
+    let tmp = new WebSocket(`ws://${location.host}/connect/${document.getElementById('target').value}`)
+    tmp.onopen = ()=>{
+        ws = tmp
+        ws.onmessage = (event)=>{
+            console.log(event)
+        }
+    }
+
+}">연결
+</button>
+<button onclick="{
+    if (ws !== undefined){
+        ws.close()
+    }
+}">연결해제
+</button>
+<br/>
+<input type="text" id="input" placeholder="메시지">
+<button onclick="{
+    if (ws !== undefined){
+        ws.send(document.getElementById('input').value)
+        document.getElementById('input').value =''
+    }
+}">보내기
+</button>
+<br/>
+<div id="log"></div>
+</body>
+</html>

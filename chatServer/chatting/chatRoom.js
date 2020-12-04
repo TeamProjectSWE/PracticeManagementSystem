@@ -1,5 +1,7 @@
 const Attendance = require('../model/Attendance');
 const Auth = require('../model/Auth');
+
+
 module.exports = class Room {
     constructor(room_code, course_code, roomNumber, io) {
         console.log(room_code, course_code, 'start!');

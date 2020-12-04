@@ -28,6 +28,7 @@ type Language interface {
 	Name() string
 	Version() *semver.Version
 	Build(src io.Reader, method string, params []Type, ret Type) (Instance, error)
+	Signature(method string, params []Type, ret Type, names []string) string
 }
 type Instance interface {
 	Valid(params []Value) error
@@ -106,6 +107,7 @@ func (s *ArrayType) EqualType(b Type) bool {
 type Value interface {
 	json.Marshaler
 	Type() Type
+	EqualValue(v Value) bool
 }
 
 type (
@@ -131,29 +133,48 @@ func (I32Value) Type() Type {
 	return PrimI32
 }
 
+func (s I32Value) EqualValue(v Value) bool {
+
+	return s.Type().EqualType(v.Type()) && s == v.(I32Value)
+}
+
 func (s I64Value) MarshalJSON() ([]byte, error) { return json.Marshal(int64(s)) }
 func (I64Value) Type() Type {
 	return PrimI64
+}
+func (s I64Value) EqualValue(v Value) bool {
+	return s.Type().EqualType(v.Type()) && s == v.(I64Value)
 }
 
 func (s F32Value) MarshalJSON() ([]byte, error) { return json.Marshal(float32(s)) }
 func (F32Value) Type() Type {
 	return PrimF32
 }
+func (s F32Value) EqualValue(v Value) bool {
+	return s.Type().EqualType(v.Type()) && s == v.(F32Value)
+}
 
 func (s F64Value) MarshalJSON() ([]byte, error) { return json.Marshal(float64(s)) }
 func (F64Value) Type() Type {
 	return PrimF64
 }
-
+func (s F64Value) EqualValue(v Value) bool {
+	return s.Type().EqualType(v.Type()) && s == v.(F64Value)
+}
 func (s StringValue) MarshalJSON() ([]byte, error) { return json.Marshal(string(s)) }
 func (StringValue) Type() Type {
 	return PrimString
+}
+func (s StringValue) EqualValue(v Value) bool {
+	return s.Type().EqualType(v.Type()) && s == v.(StringValue)
 }
 
 func (s *ArrayValue) MarshalJSON() ([]byte, error) { return json.Marshal(s.raw) }
 func (s *ArrayValue) Type() Type {
 	return s.ArrayType
+}
+func (s *ArrayValue) EqualValue(v Value) bool {
+	return s.Type().EqualType(v.Type()) && s == v.(*ArrayValue)
 }
 
 type Shape struct {

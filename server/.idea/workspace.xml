@@ -2,17 +2,103 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2f29755-8e55-4471-a419-eae72310c62d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coding/coding.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coding/ipython.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coding/ipython_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coding/typedef.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coding/typedef_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../chatServer/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../chatServer/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coditnator/.idea/coditnator.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restful/indexing.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restful/params.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restful/params_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restful/result.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root/debugchat.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chatServer/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../chatServer/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chatServer/bin/www" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chatServer/chatting/chatRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../chatServer/chatting/chatRoom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chatServer/model/Room.js" beforeDir="false" afterPath="$PROJECT_DIR$/../chatServer/model/Room.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chatServer/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../chatServer/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chatServer/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../chatServer/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chatServer/router/answer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../chatServer/router/answer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chatServer/router/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/../chatServer/router/middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/jsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/jsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/Routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/common/DBController/DBController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/common/DBController/DBController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/common/DBController/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/common/DBController/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/common/RouteWithLayout/RouteWithLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/common/RouteWithLayout/RouteWithLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/common/RouteWithLayout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/common/RouteWithLayout/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/common/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/common/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/SimpleTable/SimpleTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/SimpleTable/SimpleTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/auth/AuthForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/auth/AuthForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/auth/AuthTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/auth/AuthTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/chat/Chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/chat/Chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/chat/GameLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/chat/GameLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/chat/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/chat/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/chat/Room.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/chat/Room.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/chat/RoomLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/chat/RoomLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/chat/RoomList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/chat/RoomList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/chat/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/chat/UserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/common/AskModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/common/AskModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/common/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/common/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/common/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/common/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/common/Responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/common/Responsive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/common/SubInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/common/SubInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/common/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/common/Tags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/containers/auth/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/containers/auth/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/containers/auth/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/containers/auth/RegisterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/containers/common/HeaderContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/containers/common/HeaderContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/layouts/Default/Default.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/layouts/Default/Default.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/layouts/Default/components/Menu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/layouts/Default/components/Menu/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/layouts/Default/components/SimpleMenu/SimpleMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/layouts/Default/components/SimpleMenu/SimpleMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/layouts/Default/data/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/layouts/Default/data/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/layouts/Minimal/Minimal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/layouts/Minimal/Minimal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/layouts/Minimal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/layouts/Minimal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/lib/api/allapi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/lib/api/allapi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/lib/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/lib/api/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/lib/api/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/lib/api/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/lib/createRequestSaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/lib/createRequestSaga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/lib/styles/palette.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/lib/styles/palette.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/modules/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/modules/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/modules/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/modules/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/modules/loading.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/modules/loading.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/AddPackage/AddPackage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/AddPackage/AddPackage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/AddProblem/AddProblem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/AddProblem/AddProblem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/NotFoundCover/NotFoundCover.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/NotFoundCover/NotFoundCover.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/NotFoundCover/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/NotFoundCover/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/Packages/Packages.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/Packages/Packages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/PostListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/PostListPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/Problems/Problems.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/Problems/Problems.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/RegisterPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/RegisterPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/SelectProblems/SelectProblems.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/SelectProblems/SelectProblems.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/Solving/Solving.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/Solving/Solving.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/Solving/Solving.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/Solving/Solving.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/Template/Template.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/Template/Template.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/WritePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/WritePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/theme/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/theme/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/theme/palette.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/theme/palette.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/src/theme/typography.js" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/src/theme/typography.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coditnator/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../coditnator/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/892cbb02-c38c-42b6-ae1b-8005dfd1f5bc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/892cbb02-c38c-42b6-ae1b-8005dfd1f5bc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coding/coding.go" beforeDir="false" afterPath="$PROJECT_DIR$/coding/coding.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coding/ipython.go" beforeDir="false" afterPath="$PROJECT_DIR$/coding/ipython.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/root/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +108,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Go Application" />
         <option value="Go File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -53,22 +139,27 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/root" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Git\golang\src\github.com\TeamProjectWSE\PracticeManagementSystem\server\root" />
+    </key>
   </component>
   <component name="RunManager" selected="Go Build.go build main.go">
-    <configuration name="go build github.com/TeamProjectWSE/PracticeManagementSystem/server/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/TeamProjectWSE/PracticeManagementSystem/server/test" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/cmd/test.go" />
-      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/cmd" />
+      <filePath value="$PROJECT_DIR$/test/test.go" />
+      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/test" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
@@ -81,44 +172,46 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build test.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestValidate/ParamPostRoom:Code in github.com/TeamProjectWSE/PracticeManagementSystem/server/params" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="server" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/cmd/test.go" />
-      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestParseType in github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <working_directory value="$PROJECT_DIR$/coding" />
+      <working_directory value="$PROJECT_DIR$/params" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" />
+      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/params" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestParseType\E$" />
+      <pattern value="^\QTestValidate\E$/^\QParamPostRoom:Code\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestParseType/ParseValue in github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestValidate/ParamPostRoom:Name in github.com/TeamProjectWSE/PracticeManagementSystem/server/params" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="server" />
-      <working_directory value="$PROJECT_DIR$/coding" />
+      <working_directory value="$PROJECT_DIR$/params" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" />
+      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/params" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestParseType\E$/^\QParseValue\E$" />
+      <pattern value="^\QTestValidate\E$/^\QParamPostRoom:Name\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestValidate/ParamPostRoom:Time in github.com/TeamProjectWSE/PracticeManagementSystem/server/params" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <working_directory value="$PROJECT_DIR$/params" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/TeamProjectWSE/PracticeManagementSystem/server/params" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestValidate\E$/^\QParamPostRoom:Time\E$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build main.go" />
-        <item itemvalue="Go Build.go build test.go" />
-        <item itemvalue="Go Build.go build github.com/TeamProjectWSE/PracticeManagementSystem/server/cmd" />
-        <item itemvalue="Go Test.TestParseType/ParseValue in github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" />
-        <item itemvalue="Go Test.TestParseType in github.com/TeamProjectWSE/PracticeManagementSystem/server/coding" />
+        <item itemvalue="Go Build.go build github.com/TeamProjectWSE/PracticeManagementSystem/server/test" />
+        <item itemvalue="Go Test.TestValidate/ParamPostRoom:Code in github.com/TeamProjectWSE/PracticeManagementSystem/server/params" />
+        <item itemvalue="Go Test.TestValidate/ParamPostRoom:Time in github.com/TeamProjectWSE/PracticeManagementSystem/server/params" />
+        <item itemvalue="Go Test.TestValidate/ParamPostRoom:Name in github.com/TeamProjectWSE/PracticeManagementSystem/server/params" />
       </list>
     </recent_temporary>
   </component>
@@ -138,70 +231,82 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1887" y="525" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1604639536576" />
-    <state width="3397" height="507" key="GridCell.Tab.0.bottom" timestamp="1604980411365">
+    <state x="1500" y="455" key="FileChooserDialogImpl" timestamp="1606722364677">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="507" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604980411365" />
-    <state width="3397" height="507" key="GridCell.Tab.0.center" timestamp="1604980411365">
+    <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1606722364677" />
+    <state width="3397" height="642" key="GridCell.Tab.0.bottom" timestamp="1606975540915">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="507" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604980411365" />
-    <state width="3397" height="507" key="GridCell.Tab.0.left" timestamp="1604980411365">
+    <state width="3397" height="642" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606975540915" />
+    <state width="3397" height="642" key="GridCell.Tab.0.center" timestamp="1606975540914">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="507" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604980411365" />
-    <state width="3397" height="507" key="GridCell.Tab.0.right" timestamp="1604980411365">
+    <state width="3397" height="642" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606975540914" />
+    <state width="3397" height="642" key="GridCell.Tab.0.left" timestamp="1606975540914">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="507" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604980411365" />
-    <state width="3397" height="483" key="GridCell.Tab.1.bottom" timestamp="1604665474912">
+    <state width="3397" height="642" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606975540914" />
+    <state width="3397" height="642" key="GridCell.Tab.0.right" timestamp="1606975540915">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="483" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604665474912" />
-    <state width="3397" height="483" key="GridCell.Tab.1.center" timestamp="1604665474912">
+    <state width="3397" height="642" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606975540915" />
+    <state width="3397" height="483" key="GridCell.Tab.1.bottom" timestamp="1605088186634">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="483" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604665474912" />
-    <state width="3397" height="483" key="GridCell.Tab.1.left" timestamp="1604665474912">
+    <state width="3397" height="483" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1605088186634" />
+    <state width="3397" height="483" key="GridCell.Tab.1.center" timestamp="1605088186634">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="483" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604665474912" />
-    <state width="3397" height="483" key="GridCell.Tab.1.right" timestamp="1604665474912">
+    <state width="3397" height="483" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1605088186634" />
+    <state width="3397" height="483" key="GridCell.Tab.1.left" timestamp="1605088186634">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="483" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604665474912" />
-    <state x="1221" y="344" key="SettingsEditor" timestamp="1604543782537">
+    <state width="3397" height="483" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1605088186634" />
+    <state width="3397" height="483" key="GridCell.Tab.1.right" timestamp="1605088186634">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1221" y="344" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1604543782537" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1604641805248">
+    <state width="3397" height="483" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1605088186634" />
+    <state width="207" height="539" key="HiddenNamespacesPopup" timestamp="1606914449043">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.3440.1400@0.0.3440.1400" timestamp="1604641805248" />
-    <state x="1534" y="567" width="371" height="271" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1604979546767">
+    <state width="207" height="539" key="HiddenNamespacesPopup/0.0.3440.1400@0.0.3440.1400" timestamp="1606914449043" />
+    <state x="1221" y="344" key="SettingsEditor" timestamp="1606799579257">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1534" y="567" width="371" height="271" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.3440.1400@0.0.3440.1400" timestamp="1604979546767" />
-    <state x="1300" y="355" key="com.intellij.database.dbimport.ImportDialog" timestamp="1604978853548">
+    <state x="1221" y="344" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1606799579257" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1606641461882">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1300" y="355" key="com.intellij.database.dbimport.ImportDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1604978853548" />
-    <state x="1613" y="550" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1604941315975">
+    <state width="498" height="446" key="SwitcherDM/0.0.3440.1400@0.0.3440.1400" timestamp="1606641461882" />
+    <state x="1534" y="567" width="371" height="271" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1606638076154">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1613" y="550" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.3440.1400@0.0.3440.1400" timestamp="1604941315975" />
-    <state x="1833" y="489" width="1055" height="893" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1604979545174">
+    <state x="1534" y="567" width="371" height="271" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.3440.1400@0.0.3440.1400" timestamp="1606638076154" />
+    <state x="1300" y="355" key="com.intellij.database.dbimport.ImportDialog" timestamp="1605079116976">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1833" y="489" width="1055" height="893" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1604979545174" />
+    <state x="1300" y="355" key="com.intellij.database.dbimport.ImportDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1605079116976" />
+    <state x="1506" y="499" width="427" height="397" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1605114036949">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1506" y="499" width="427" height="397" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1605114036949" />
+    <state x="1613" y="550" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1605113379322">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1613" y="550" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.3440.1400@0.0.3440.1400" timestamp="1605113379322" />
+    <state x="1560" y="365" width="1055" height="949" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1606926187117">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1560" y="365" width="1055" height="949" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606926187117" />
     <state x="1545" y="455" key="refactoring.ChangeSignatureDialog" timestamp="1604582074224">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1545" y="455" key="refactoring.ChangeSignatureDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1604582074224" />
-    <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1604937885020">
+    <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1606915400632">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1604937885020" />
+    <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1606915400632" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -213,8 +318,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/coding/ipython.go</url>
-          <line>177</line>
+          <line>197</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/restful/result.go</url>
+          <line>20</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

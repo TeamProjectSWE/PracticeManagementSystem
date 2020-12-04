@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
             if (err) {
                 res.json({ success: false });
             }
-            res.json(result);
+            res.json({ success: true, result });
         }
     );
 });
@@ -40,7 +40,7 @@ router.put('/', (req, res) => {
             if (err) {
                 res.json({ success: false });
             }
-            res.json(result);
+            res.json({ success: true, result });
         }
     );
 });
@@ -52,7 +52,7 @@ router.delete('/', (req, res) => {
         if (err) {
             res.json({ success: false });
         }
-        res.json(result);
+        res.json({ success: true, result });
     });
 });
 

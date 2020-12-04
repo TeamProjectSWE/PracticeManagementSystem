@@ -1,0 +1,1 @@
+def pow(num):    return num*num

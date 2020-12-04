@@ -44,7 +44,7 @@ const SimpleTable = props => {
           {heads.map((head) => {
             return printBody(body, head.id);
           })}
-          {printActions(body.code)}
+          {printActions(body)}
         </tr>
       );
     });
@@ -58,18 +58,18 @@ const SimpleTable = props => {
   const printTags = (tags) => {
     return (
       <td>
-        {tags.map((tag) => {
-          return <Tag code={tag.code} size={0.7} />;
-        })}
+        {tags !== undefined ? tags.map((tag) => {
+          return <Tag code={tag} size={0.7} />;
+        }) : null}
       </td>
     );
   };
-  const printActions = (code) => {
+  const printActions = (body) => {
     return (
       <td>
-        {typeof customEvent === 'function' ? <button onClick={() => { customEvent(code) }} className={'icon_btn'}><Icon className="icon" path={ mdiLightbulbOnOutline } size={0.7}/></button> : null}
-        {typeof infoEvent === 'function' ? <button onClick={() => { infoEvent(code) }} className={'icon_btn'}><Icon className="icon" path={ mdiEyeOutline } size={0.7}/></button> : null}
-        {typeof deleteEvent === 'function' ? <button onClick={() => { deleteEvent(code) }} className={'icon_btn'}><Icon className="icon" path={ mdiTrashCanOutline } size={0.7}/></button> : null}
+        {typeof customEvent === 'function' ? <button onClick={() => { customEvent(body) }} className={'icon_btn'}><Icon className="icon" path={ mdiLightbulbOnOutline } size={0.7}/></button> : null}
+        {typeof infoEvent === 'function' ? <button onClick={() => { infoEvent(body) }} className={'icon_btn'}><Icon className="icon" path={ mdiEyeOutline } size={0.7}/></button> : null}
+        {typeof deleteEvent === 'function' ? <button onClick={() => { deleteEvent(body) }} className={'icon_btn'}><Icon className="icon" path={ mdiTrashCanOutline } size={0.7}/></button> : null}
       </td>
     );
   }

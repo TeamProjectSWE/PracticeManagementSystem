@@ -10,60 +10,73 @@ import { SimpleMenu, Menu } from './components';
 
 /* ----- Data Import ----- */
 import { pages } from './data'
+import {getSession} from "../../common";
 
-const Default = props => {
-  const { children } = props;
-  const [ visibleMenu, setVisibleMenu ] = useState(true);
-  const history = useHistory();
+class Default extends React.Component {
+    state = {
+        session: {},
+        visibleMenu: true
+    }
 
-  /* Method */
-  const toggleMenu = () => {
-    setVisibleMenu(!visibleMenu);
-  }
+    async componentDidMount() {
+        let tmp = await getSession(() => {
+        });
+        this.setState({session: tmp.data});
+    }
 
-  const isLogin = () => {
-    return true;
-  }
+    /* Method */
+    toggleMenu = () => {
+        this.setState({ visibleMenu: !this.state.visibleMenu });
+    }
 
-  const logout = () => {
-    // Delete Session
-    history.push('/home');
-  }
+    isLogin = () => {
+        return true;
+    }
 
-  if(!isLogin()){
-    history.push('/home');
-  }
+    logout = () => {
+        // Delete Session
+        window.location.href = '/auth/logout';
+    }
 
-  return (
-    <div className={visibleMenu ? 'layout default' : 'layout default hide_menu'}>
-      <div className={'box simple_menu'}>
-        <SimpleMenu pages={pages} />
-      </div>
-      <div className={'box menu'}>
-        <Menu pages={pages} ref={right => this.right = right} />
-      </div>
-      <div className={'box info flex-align middle'}>
-        <span className={'menu_btn'}>
-          <button onClick={toggleMenu} className={'icon_btn'}><Icon path={ mdiMenu } size={1.0} color={'black'} /></button>
-        </span>
-        <span className={'my_info'}>
-          <em>CJG</em>
-        </span>
-        <span className={'my_icons'}>
-          <button className={'icon_btn'}><Icon path={ mdiBellRingOutline } size={1} color={'#91979D'} /></button>
-          <button className={'icon_btn'}><Icon path={ mdiCog } size={1} color={'#91979D'} /></button>
-          <button onClick={logout} className={'icon_btn'}><Icon path={ mdiLogout } size={1} color={'#F06B78'} /></button>
-        </span>
-      </div>
-      <div className={'box stepper'}>
+    render() {
+        const {children, history} = this.props;
+        const session = this.state.session.success;
 
-      </div>
-      <div className={'box contents'}>
-        <main className={'main'}>{children}</main>
-      </div>
-    </div>
-  );
-};
+        if (!this.isLogin()) {
+            history.push('/');
+        }
+
+        return (
+            <div className={this.state.visibleMenu ? 'layout default' : 'layout default hide_menu'}>
+                <div className={'box simple_menu'}>
+                    <SimpleMenu pages={pages} level={session ? session.auth.level : 1}/>
+                </div>
+                <div className={'box menu'}>
+                    <Menu pages={pages} ref={right => this.right = right} level={session ? session.auth.level : 1}/>
+                </div>
+                <div className={'box info flex-align middle'}>
+                        <span className={'menu_btn'}>
+                            <button onClick={this.toggleMenu} className={'icon_btn'}><Icon path={mdiMenu} size={1.0} color={'black'}/></button>
+                        </span>
+                    <span className={'my_info'}>
+                            <em>CJG</em>
+                        </span>
+                    <span className={'my_icons'}>
+                            <button className={'icon_btn'}><Icon path={mdiBellRingOutline} size={1} color={'#91979D'}/></button>
+                            <button className={'icon_btn'}><Icon path={mdiCog} size={1} color={'#91979D'}/></button>
+                            <button onClick={this.logout} className={'icon_btn'}><Icon path={mdiLogout} size={1} color={'#F06B78'}/></button>
+                        </span>
+                </div>
+                <div className={'box stepper'}>
+
+                </div>
+                <div className={'box contents'}>
+                    <main className={'main'}>{children}</main>
+                </div>
+            </div>
+        )
+    }
+}
 
 Default.propTypes = {
   children: PropTypes.node,

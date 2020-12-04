@@ -16,10 +16,9 @@ import {
   SimpleModal
 } from '../../components';
 import AddProblem from '../AddProblem';
-import { getData } from '../../common'
+import { getData, putData, postData, deleteData } from '../../common'
 
 /* Data Import */
-import { rows } from './data/index';
 import SimpleDialog from "../../components/SimpleDialog";
 
 /* Const */
@@ -40,6 +39,7 @@ const useStyles = (thema) => ({
 class Problems extends React.Component {
   state = {
     selectedCode: '',
+    selectedType: '',
     addProblemModal: false,
     infoProblemModal: false,
     deleteProblemDialog: false,
@@ -53,20 +53,56 @@ class Problems extends React.Component {
   }
   /* Component Did Mount */
   componentDidMount() {
-    /*
-    getData('/api/package', [], (res) => {
-      this.setState({ bodys: res.data.success });
-    }, () => {
-      this.setState({ bodys: rows });
-    });
-     */
-    this.setState({ bodys: rows });
+    this.setBodys();
   }
+
+  setBodys = async () => {
+    // Problem 목록 정보 불러오기
+    if(this.isExistPackageCode()){
+      const { match } = this.props;
+      const packageCode = match.params.package_code;
+
+      await getData(`/api/package/${packageCode}/problem`, (res) => {
+        let data = res.data.success;
+        data.map((d, index) => {
+          data[index] = this.descriptionParse(d);
+        })
+        this.setState({ bodys: data });
+      }, (err) => {
+        this.setState({ bodys: [] });
+      });
+    }
+    else {
+      await getData('/api/problem', (res) => {
+        let data = res.data.success;
+        data.map((d, index) => {
+          data[index] = this.descriptionParse(d);
+        })
+        this.setState({ bodys: data });
+      }, (err) => {
+        this.setState({ bodys: [] });
+      });
+    }
+  };
+
+  descriptionParse = (data) => {
+    let parsed = JSON.parse(data.description);
+
+    data.description = parsed.text;
+    data.answer = parsed.answer;
+    data.choices = parsed.choices;
+
+    return data;
+  };
 
   /* Method */
   isExistPackageCode = () => {
     const { match } = this.props;
-    return typeof match.params.packageCode === 'string';
+    return typeof match.params.package_code === 'string';
+  }
+  isExistAssignmentCode = () => {
+    const { match } = this.props;
+    return typeof match.params.assignment_code === 'string';
   }
 
   openAddProblemModal = () => {
@@ -74,6 +110,7 @@ class Problems extends React.Component {
   };
   closeAddProblemModal = () => {
     this.setState({ addProblemModal: false });
+    this.setBodys();
   };
 
   openInfoProblemModal = () => {
@@ -81,6 +118,7 @@ class Problems extends React.Component {
   };
   closeInfoProblemModal = () => {
     this.setState({ infoProblemModal: false });
+    this.setBodys();
   };
 
   openDeleteProblemDialog = () => {
@@ -91,45 +129,55 @@ class Problems extends React.Component {
   };
 
   // Package Code is exist event
-  deleteEventA = (code) => {
-    this.setState({ selectedCode: code });
+  deleteEventA = (body) => {
+    this.setState({ selectedCode: body.code });
     this.openDeleteProblemDialog();
   };
 
   // Default event
-  deleteEventB = (code) => {
-    this.setState({ selectedCode: code });
+  deleteEventB = (body) => {
+    this.setState({ selectedCode: body.code });
     this.openDeleteProblemDialog();
   };
 
-  deleteAgree = () => {
-    if(this.isExistPackageCode) {
+  deleteAgreeA = () => {
+    // Package 에서 Problem 삭제
+    const { match } = this.props;
 
-    }
-    else {
+    let packageCode = match.params.package_code;
+    let problemCode = this.state.selectedCode;
+    deleteData(` /api/package/${packageCode}/problem/${problemCode}`, (res) => {
+      // Package 목록 정보 다시 불러오기
+      this.setBodys();
+      this.closeDeleteProblemDialog();
+    }, (err) => {
 
-    }
-
-    this.state.bodys.map((body, index) => {
-      if(body.code === 'undefined') {
-        return null;
-      }
-      else if(body.code === this.state.selectedCode) {
-        let copyBodys = this.state.bodys;
-        copyBodys.splice(index, 1);
-
-        this.setState({ bodys: copyBodys });
-      }
     });
-    this.closeDeleteProblemDialog();
+  };
+  deleteAgreeB = () => {
+    // Problem 삭제
+    const problemCode = this.state.selectedCode;
+    deleteData(`/api/problem/${problemCode}`, (res) => {
+      // Package 목록 정보 다시 불러오기
+      this.setBodys();
+      this.closeDeleteProblemDialog();
+    }, (err) => {
+
+    });
   };
 
   deleteDisagree = () => {
     this.closeDeleteProblemDialog();
   };
+
+  customEvent = (body) => {
+    const { history, match } = this.props;
+    history.push(`/solving/${body.code}/${match.params.assignment_code}`);
+  }
   
-  infoEvent = (code) => {
-    this.setState({ selectedCode: code })
+  infoEvent = (body) => {
+    this.setState({ selectedCode: body.code });
+    this.setState({ selectedType: body.type });
     this.openInfoProblemModal();
   };
 
@@ -144,7 +192,7 @@ class Problems extends React.Component {
     return (
       <div className={'page problems'}>
         {this.isExistPackageCode() ?
-          <div className={'content'} ><em>{match.params.packageCode}</em></div> : <div className={'content'}>
+          <div className={'content'} ><em>{match.params.package_code}</em></div> : <div className={'content'}>
           <div className={'search_box'}>
 
           </div>
@@ -167,14 +215,15 @@ class Problems extends React.Component {
           <SimpleTable
             heads={this.state.heads}
             bodys={this.state.bodys}
-            deleteEvent={this.isExistPackageCode() ? this.deleteEventA : this.deleteEventB}
+            customEvent={this.isExistAssignmentCode() ? this.customEvent : null}
             infoEvent={this.isExistPackageCode() ? null : this.infoEvent}
+            deleteEvent={this.isExistPackageCode() ? (this.isExistAssignmentCode() ? null : this.deleteEventA) : this.deleteEventB}
             infoModal={
               <SimpleModal
                 title={'문제 수정'}
                 open={this.state.infoProblemModal}
                 close={this.closeInfoProblemModal}
-                body={<AddProblem close={this.closeInfoProblemModal} code={this.state.selectedCode}/>}
+                body={<AddProblem close={this.closeInfoProblemModal} code={this.state.selectedCode} type={this.state.selectedType} />}
               />
             }
           />
@@ -193,7 +242,7 @@ class Problems extends React.Component {
             content: contentPrefix + this.state.selectedCode + ' 문제를 삭제하시겠습니까?',
             agreeText: 'YES',
             disagreeText: 'NO',
-            agreeEvent: this.deleteAgree,
+            agreeEvent: this.isExistPackageCode() ? this.deleteAgreeA : this.deleteAgreeB,
             disagreeEvent: this.deleteDisagree
           }}
         />

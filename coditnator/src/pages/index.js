@@ -7,3 +7,8 @@ export { default as AddProblem } from './AddProblem';
 export { default as AddPackage } from './AddPackage';
 export { default as SelectTags } from './SelectTags';
 export { default as SelectProblems } from './SelectProblems';
+export { default as Scoring } from './Scoring';
+export { default as Assignments } from './Assignments';
+export { default as MainRoom } from './MainRoom';
+export { default as SelectPackage } from './SelectPackage';
+export { default as SelectCourse } from './SelectCourse';

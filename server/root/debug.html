@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<a href="/auth/login">로그인</a>
+<a href="/auth/logout">로그아웃</a>
+<a href="/auth/session">세션 확인</a>
+<br/>
+<hr/>
+<h1>강좌</h1>
+<hr/>
+<div>
+    <a href="/api/course">강좌 확인</a>
+</div>
+<hr/>
+<div>
+    <input type="text" name="get_course_by_id" placeholder="강의 번호">
+    <button onclick="window.location.href=`/api/course/${document.getElementsByName('get_course_by_id')[0].value}`">특정
+        강좌 확인
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="new_course_name" placeholder="강의 이름">
+    <input type="text" name="new_course_desc" placeholder="강의 설명">
+    <button onclick="{
+        axios.post(`/api/course`, {
+            name : document.getElementsByName('new_course_name')[0].value,
+            description : document.getElementsByName('new_course_desc')[0].value})
+            .then(res=>{
+                alert('추가')
+                console.log('result', res)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    }">강좌 추가
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="new_course_name" placeholder="강의 이름">
+    <input type="text" name="new_course_desc" placeholder="강의 설명">
+    <button onclick="{
+        axios.post(`/api/course`, {
+            name : document.getElementsByName('new_course_name')[0].value,
+            description : document.getElementsByName('new_course_desc')[0].value})
+            .then(res=>{
+                alert('추가')
+                console.log('result', res)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    }">강좌 추가
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="enroll_course_by_id" placeholder="강의 번호">
+    <button onclick="{
+        axios.post(`/api/course/${document.getElementsByName('enroll_course_by_id')[0].value}/enroll`)
+        .then(res=>{console.log(res)})
+        .catch(err=>{console.log(err)})
+    }">수강
+    </button>
+</div>
+<hr/>
+<h1>강의실</h1>
+<hr/>
+<div>
+    <input type="text" name="get_room_by_code" placeholder="강의 번호">
+    <button onclick="{
+        window.location.href = `/api/course/${document.getElementsByName('get_room_by_code')[0].value}/room`
+    }">강의실 목록
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="new_room_course_code" placeholder="강의 번호">
+    <input type="text" name="new_room_name" placeholder="방 이름">
+    <input type="text" name="new_room_desc" placeholder="방 설명">
+    <input type="datetime-local" name="new_room_open">
+    <input type="datetime-local" name="new_room_close">
+    <button onclick="{
+        console.log(document.getElementsByName('new_room_open')[0].value,)
+        axios.post(`/api/course/${document.getElementsByName('new_room_course_code')[0].value}/room`, {
+            name : document.getElementsByName('new_room_name')[0].value,
+            open_time : new Date(document.getElementsByName('new_room_open')[0].value).toISOString(),
+            close_time : new Date(document.getElementsByName('new_room_close')[0].value).toISOString(),
+            description : document.getElementsByName('new_room_desc')[0].value})
+            .then(res=>{
+                alert('추가')
+                console.log('result', res)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    }">수강
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="room_attend" placeholder="강의 번호">
+    <button onclick="{
+        window.location.href = `/api/room/${document.getElementsByName('room_attend')[0].value}/attendance`
+    }">수강
+    </button>
+</div>
+<hr/>
+<h1>과제</h1>
+<hr/>
+<div>
+    <input type="text" id="get_course_assi" placeholder="강의 번호">
+    <button onclick="{
+        window.location.href = `/api/course/${document.getElementById('get_course_assi').value}/assignment`
+    }">과제목록
+    </button>
+</div>
+
+<hr/>
+<div>
+    <input type="text" id="new_assi_course" placeholder="강의 번호">
+    <input type="text" id="new_assi_title" placeholder="과제명">
+    <input type="text" id="new_assi_desc" placeholder="과제 설명">
+    <input type="text" id="new_assi_pack" placeholder="패키지">
+    <button onclick="{
+        axios.post(
+            `/api/course/${document.getElementById('new_assi_course').value}/assignment`,
+            {
+                title : document.getElementById('new_assi_title').value,
+                description : document.getElementById('new_assi_desc').value,
+                'package' : document.getElementById('new_assi_pack').value,
+            }
+        )
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
+    }">과제추가
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" id="get_assi_question" placeholder="과제 번호">
+    <button onclick="{
+        window.location.href = `/api/assignment/${document.getElementById('get_assi_question').value}/question`
+    }">질문목록
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" id="question_assi" placeholder="과제 번호">
+    <input type="text" id="question_title" placeholder="질문 제목">
+    <input type="text" id="question_desc" placeholder="질문 설명">
+    <button onclick="{
+        axios.post(
+            `/api/assignment/${document.getElementById('question_assi').value}/question`,
+            {
+                title : document.getElementById('question_title').value,
+                description : document.getElementById('question_desc').value,
+            }
+        )
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
+    }">질문하기
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" id="answer_ques" placeholder="질문 번호">
+    <input type="text" id="answer_desc" placeholder="답변">
+    <button onclick="{
+        axios.post(
+            `/api/answer/${document.getElementById('answer_ques').value}`,
+            {
+                description : document.getElementById('answer_desc').value,
+            }
+        )
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
+    }">질문하기
+    </button>
+</div>
+<hr/>
+<label>파이썬</label>
+<a href="/api/coding/python">파이썬 정보 확인</a>
+<form method="post" action="/api/coding/python" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td><label>src</label></td>
+            <td><input type="file" name="src"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>entry</label></td>
+            <td><input type="text" name="entry"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>params</label></td>
+            <td><input type="text" name="params"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>return</label></td>
+            <td><input type="text" name="return"/><br/></td>
+        </tr>
+        <tr>
+            <td><label>call</label></td>
+            <td><input type="text" name="call"/></td>
+        </tr>
+    </table>
+    <button type="submit">Call</button>
+</form>
+<hr/>
+<a href="/api/course">수업 확인</a>
+<hr/>
+<form method="post" action="/api/course" enctype="multipart/form-data">
+    <input type="text" name="code" placeholder="수업 코드"/>
+    <input type="text" name="name" placeholder="수업 이름"/>
+    <input type="text" name="description" placeholder="수업 설명"/>
+    <button type="submit">수업 추가</button>
+</form>
+<hr/>
+<div>
+    <input type="text" name="t0_course_id" placeholder="수업 코드"/>
+    <button onclick="window.location.href = `/api/course/${document.getElementsByName('t0_course_id')[0].value}`">
+        특정 수업 확인
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="t1_course_id" placeholder="수업 코드"/>
+    <button onclick="window.location.href = `/api/course/${document.getElementsByName('t1_course_id')[0].value}/room`">
+        특정 수업의 방 확인
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="t2_course_id" placeholder="수업 코드"/>
+    <input type="text" name="t2_room_code" placeholder="방 코드"/>
+    <input type="text" name="t2_room_name" placeholder="방 이름"/>
+    <input type="text" name="t2_room_desc" placeholder="방 설명"/>
+    <input type="datetime-local" name="t2_open_time" placeholder="시작시간"/>
+    <input type="datetime-local" name="t2_close_time" placeholder="종료시간"/>
+    <button onclick="{
+        let ot = new Date(document.getElementsByName('t2_open_time')[0].value)
+        let ct = new Date(document.getElementsByName('t2_close_time')[0].value)
+        axios.post(
+            `/api/course/${document.getElementsByName('t2_course_id')[0].value}/room`,
+            {
+                code : document.getElementsByName('t2_room_code')[0].value,
+                name : document.getElementsByName('t2_room_name')[0].value,
+                description : document.getElementsByName('t2_room_desc')[0].value,
+                ...!isNaN(ot) && {open_time : ot},
+                ...!isNaN(ct) && {close_time : ct},
+            })
+            .then(function() {
+                alert(`성공`)
+            })
+            .catch(function (param){
+                console.log(`Fail : `, param)
+                alert(`Fail : ${param}`)
+            })
+    }">
+        방 추가
+    </button>
+</div>
+<hr/>
+<h1>패키지</h1>
+<hr/>
+<div>
+    <a href="/api/package">패키지 확인</a>
+</div>
+<hr/>
+<div>
+    <input type="text" name="pkg_code">
+    <button onclick="window.location.href=`/api/package/${document.getElementsByName('pkg_code')[0].value}`">특정 패키지 확인
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="del_pkg_code">
+    <button onclick="{
+        axios.delete(`/api/package/${document.getElementsByName('del_pkg_code')[0].value}`)
+        .then(res => {
+            console.log(res)
+            alert('삭제 완료')
+        })
+        .catch(err => {
+            console.log(err)
+            alert('삭제 실패')
+        })
+    }">패키지 삭제
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="add_package" placeholder="패키지 코드">
+    <input type="text" name="add_problem" placeholder="문제 코드">
+    <button onclick="{
+        let pbl_code = document.getElementsByName('add_problem')[0].value
+        axios.post(
+            `/api/package/${document.getElementsByName('add_package')[0].value}/problem`,
+            {
+                ... pbl_code !== undefined && pbl_code.length !== 0 ? {problems : [pbl_code]}: undefined,
+            }
+        ).then(res => console.log(res))
+        .catch(err => console.log(err))
+    }">
+        문제 추가
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="all_problem" placeholder="패키지 코드">
+    <button onclick="{
+        window.location.href = `/api/package/${document.getElementsByName('all_problem')[0].value}/problem`
+    }">
+        패키지 내 문제
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="create_package_name" placeholder="패키지명">
+    <input type="text" name="create_package_desc" placeholder="패키지 설명">
+    <button onclick="{
+        let name = document.getElementsByName('create_package_name')[0].value
+        let desc = document.getElementsByName('create_package_desc')[0].value
+        axios.post(
+            `/api/package`,
+            {
+                name : name,
+                description : desc,
+            }
+        ).then(res => console.log(res))
+        .catch(err => console.log(err))
+    }">
+        패키지 생성
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="edit_package_code" placeholder="패키지 코드">
+    <input type="text" name="edit_package_name" placeholder="패키지명">
+    <input type="text" name="edit_package_desc" placeholder="패키지 설명">
+    <button onclick="{
+        let name = document.getElementsByName('edit_package_name')[0].value
+        let desc = document.getElementsByName('edit_package_desc')[0].value
+        axios.put(
+            `/api/package/${document.getElementsByName('edit_package_code')[0].value}`,
+            {
+                ... name !== undefined && name.length !== 0 ? {name : name}: undefined,
+                ... desc !== undefined && desc.length !== 0 ? {description : desc}: undefined,
+            }
+        ).then(res => console.log(res))
+        .catch(err => console.log(err))
+    }">
+        패키지 수정
+    </button>
+</div>
+<hr/>
+<h1>문제</h1>
+<hr/>
+<div>
+    <a href="/api/problem">문제 확인</a>
+</div>
+<hr/>
+<div>
+    <input type="text" name="plb_code">
+    <button onclick="window.location.href=`/api/problem/${document.getElementsByName('plb_code')[0].value}`">특정 문제 확인
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="solve_plbcode" placeholder="문제 번호">
+    <input type="text" name="solve_language" value="python" placeholder="사용 언어">
+    <input type="file" name="solve_source">
+    <button onclick="{
+        let formData = new FormData()
+        formData.append('source', document.getElementsByName('solve_source')[0].files[0])
+        axios.post(
+            `/api/problem/${document.getElementsByName('solve_plbcode')[0].value}/solve/${document.getElementsByName('solve_language')[0].value}`,
+            formData)
+            .then(res =>{
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }">
+        문제 풀이
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="sig_solve_plbcode" placeholder="문제 번호">
+    <input type="text" name="sig_solve_language" value="python" placeholder="사용 언어">
+    <button onclick="window.location.href = `/api/problem/${document.getElementsByName('sig_solve_plbcode')[0].value}/signature/${document.getElementsByName('sig_solve_language')[0].value}`">
+        기본 정의 파일
+    </button>
+</div>
+<hr/>
+<h1>과제</h1>
+<hr/>
+<div>
+    <input type="text" name="assign_acode" placeholder="과제번호">
+    <input type="text" name="assign_pcode" placeholder="문제번호">
+    <input type="file" name="assign_source">
+    <input type="text" name="assign_lang" value="python" placeholder="사용 언어">
+    <button onclick="{
+        let formData = new FormData()
+        formData.append('language', document.getElementsByName('assign_lang')[0].value)
+        formData.append('source', document.getElementsByName('assign_source')[0].files[0])
+        axios.post(
+            `/api/assignment/${document.getElementsByName('assign_acode')[0].value}/submission/${document.getElementsByName('assign_pcode')[0].value}`,
+            formData
+        ).then(res => console.log(res))
+        .catch(err => console.log(err))
+    }">
+        제출
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="score_target" placeholder="과제번호">
+    <button onclick="{
+        window.location.href = `/api/assignment/${document.getElementsByName('score_target')[0].value}/scoring`
+    }">
+        채점
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="manual_score_assi" placeholder="과제번호">
+    <input type="text" name="manual_score_p" placeholder="문제번호">
+    <input type="text" name="manual_score_user" placeholder="학생번호">
+    <input type="number" name="manual_score" placeholder="과제점수">
+    <button onclick="{
+        let assi = document.getElementsByName('manual_score_assi')[0].value
+        let p___ = document.getElementsByName('manual_score_p')[0].value
+        let user = document.getElementsByName('manual_score_user')[0].value
+
+        axios.put(
+            `/api/assignment/${assi}/submission/${p___}/manual-score/${user}`,
+            {
+                score : parseFloat(document.getElementsByName('manual_score')[0].value)
+            }
+        ).then(res => console.log(res))
+        .catch(err => console.log(err))
+    }">
+        점수등록
+    </button>
+</div>
+<hr/>
+<div>
+    <input type="text" name="read_assi" placeholder="과제번호">
+    <input type="text" name="read_p" placeholder="문제번호">
+    <input type="text" name="read_user" placeholder="학생번호">
+    <button onclick="{
+        let assi = document.getElementsByName('read_assi')[0].value
+        let p___ = document.getElementsByName('read_p')[0].value
+        let user = document.getElementsByName('read_user')[0].value
+        window.location.href = `/api/assignment/${assi}/submission/${p___}/read/${user}`
+    }">
+        내용보기
+    </button>
+</div>
+</body>
+</html>
